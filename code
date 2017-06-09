@@ -1,0 +1,73 @@
+#This is a word shuffler game
+#It can be used by kids to learn how to read and write
+#The computer picks a random word and shuffles up the letters
+#It is presented to the player and they have to unshuffle it
+
+import random
+
+#Create a list of words for the computer to shuffle
+
+Mixup = ('zoo', 'lion', 'animal', 'sand', 'water', 'flower', 'oven', 'science', 'father',
+         'math', 'english', 'history', 'block', 'dog', 'cat', 'fish', 'school', 'learn',
+         'beach', 'ocean', 'dinosaur', 'dragon', 'sun', 'moon', 'day', 'night', 'mother',)
+
+# This tells the computer to pick a random word from the list
+
+word = random.choice(Mixup)
+
+#This is a variable for later to check if the guess is correct
+
+correct = word
+
+# This tells the computer to shuffle the word up
+
+jumble = ''
+
+while word:
+    position=random.randrange(len(word))
+    jumble+= word[position]
+    word= word[:position] + word[(position + 1):]
+    
+
+# Then, this command starts the game
+
+print (
+'''
+    Welcome to Shuffler: The Interactive Word Shuffle Game
+    This is a computer game to help your toddlers learn how to read and write.
+    They will be presented with a shuffled word, and will need to unshuffle it.
+'''
+)
+
+# The below command runs the game.
+#The player will need to run the program again to play another round.
+
+start = input("Play game? (Enter Yes or No): ") # Asks the player if they want to play
+
+#This if statement allows the player to say yes to starting the game
+if start == 'yes' or start == 'Yes':
+    print ('The scrambled word is:', jumble) #Provides the player a jumbled word
+    guess = input ('Your guess: ') #allows the player to input their guess
+
+#tells the player their guess is incorrect and allows them to input endless guesses
+    while guess != correct and guess != "":
+        print ('Incorrect answer')
+        guess = input('New guess:')
+
+#tells the player their guess is correct
+    if guess == correct:
+        print ('''
+That is correct!
+Rerun the program to play another round.
+''')
+        
+#This if statement allows the player to say no to starting the game
+if start == 'no' or start == 'No' :
+    print ('Okay, bye! Play again soon.') 
+    quit
+    
+    
+
+
+    
+
